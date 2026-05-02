@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(16px);
+  --accent: #ffffff;
+  --accent-muted: rgba(255, 255, 255, 0.5);
+  --danger: #ff3333;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  /* Obsidian gradient */
+  background-image: radial-gradient(circle at 50% 0%, #111111 0%, #000000 70%);
+  background-attachment: fixed;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Glowing Search Bar */
+.glowing-input {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--glass-border);
+  color: var(--foreground);
+  padding: 1rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  outline: none;
+  width: 100%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.glowing-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.glowing-button {
+  background: var(--foreground);
+  color: var(--background);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.glowing-button:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.glowing-button:disabled {
+  background: var(--accent-muted);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Label styling */
+.label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-muted);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.value {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.value.redacted {
+  color: var(--danger);
+  font-style: italic;
+}
+
+/* Satirical elements */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+  border-top: 1px dashed var(--glass-border);
+  border-bottom: 1px dashed var(--glass-border);
+  padding: 0.5rem 0;
+  margin-top: 4rem;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+  color: var(--accent-muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Ticket Roulette */
+.roulette-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.roulette-status {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  border-radius: 4px;
+  background: rgba(255, 51, 51, 0.05);
+}
