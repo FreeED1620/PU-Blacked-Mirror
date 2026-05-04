@@ -215,12 +215,12 @@ export default function Home() {
             </button>
           )}
 
-          {filteredVectors.map((v) => {
+          {filteredVectors.map((v, idx) => {
             const status = getVectorStatus(v);
             const isActive = activeVector === v.action;
             return (
               <button
-                key={v.action}
+                key={`${v.action}-${idx}`}
                 onClick={() => handleVectorClick(v.action)}
                 className={`px-6 py-3 font-mono text-xs uppercase tracking-widest rounded-md border transition-all duration-300 flex items-center gap-2 ${getVectorColors(status, isActive)}`}
               >
