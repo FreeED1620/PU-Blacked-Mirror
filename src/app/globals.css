@@ -61,7 +61,7 @@ body {
   color: var(--background);
   border: none;
   padding: 1rem 2rem;
-  border-radius: 9999px;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -164,4 +164,3 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 51, 51, 0.6);
 }
-

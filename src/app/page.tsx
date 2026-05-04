@@ -244,7 +244,7 @@ export default function Home() {
             />
             <button 
               type="submit" 
-              className="glowing-button text-lg uppercase tracking-[0.3em] font-black"
+              className="glowing-button text-lg uppercase tracking-[0.3em] font-black self-center px-12 max-w-md w-full"
               disabled={loading}
             >
               {loading ? 'BREACHING DATABASE...' : 'initiate query'}
