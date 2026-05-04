@@ -41,9 +41,11 @@ const RIGHT_ASCII = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀�
 ⠀⠉⠳⣄⠀⢀⡤⡺⠛⠉⠀⠀⠀⠀⠈⣻⢦⠀⠀⠀⠀⢻⡆⠀⠀⠀⠈⠻⠟⢁⡎⠀⠀⠀⠀⠀⠙⠦⣄⣀⣤⠟⠀⠀⠉⣀⣀⣀⡉⠂⠀⠀⣽⣏⠁⠀⠀⠀⠀⠀⠀⠀⢇⠀⠀⠀⠀⠀⢠⡞⠀
 ⠀⠀⠀⢈⣷⠋⠀⠁⠀⠀⠀⠀⠀⢈⣩⣤⣼⣧⣤⡀⠀⠀⠻⡄⠀⠀⠀⠀⢀⡼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠀⠀⣈⣭⠵⠒⠋⠉⠂⠀⠀⠹⡌⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠋⠀⠀
 ⠀⠀⠀⣾⠋⠀⠀⠀⠀⠀⢀⡤⠞⠉⠉⠀⠀⠀⠈⣻⡆⠀⣀⣙⡦⠤⣀⣤⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠴⠋⣡⡏⠀⠀⠀⠀⠀⠀⠀⠀⠙⠲⣄⡀⠀⠀⠀⠀⠀⠀⣀⣠⠴⠋⠁⠀⠀⠀
+⠀⠀⠀ge⠋⠀⠀⠀⠀⢀⡶⠉⠀⠀⠀⠀⠀⠀⠀⠈⠁⡧⠋⠉⠁⠀⠀⠀⠘⠀⠀⠀⠀⠀⠀⠀⢀⣠⠴⠚⠉⠀⢀⣴⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠁⠈⠉⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣾⠋⠀⠀⠀⠀⠀⢀⡶⠉⠀⠀⠀⠀⠀⠀⠀⠈⠁⡧⠋⠉⠁⠀⠀⠀⠘⠀⠀⠀⠀⠀⠀⠀⢀⣠⠴⠚⠉⠀⢀⣴⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠁⠈⠉⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⢸⠇⠀⠀⠀⠀⢀⡶⠉⠀⠀⠀⠀⠀⠀⠀⠈⠁⡧⠋⠉⠁⠀⠀⠀⠘⠀⠀⠀⠀⠀⠀⠀⢀⣠⠴⠚⠉⠀⢀⣴⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠁⠈⠉⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⢸⠀⠀⠀⠉⠑⢏⠀⠀⠀⠀⠀⠀⣀⣤⠶⠶⠾⣧⡀⠀⠀⠀⠀⠀⣤⣤⣤⣤⡤⠒⠒⠉⠁⠀⠀⣀⣤⣶⠿⢿⡿⠀⠀⠀⠀⠀⠀⠀⠀⢀⡶⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠈⡆⠀⠀⠀⠀⠈⠇⠀⠀⢀⡤⠚⠉⠀⠀⠀⠐⠁⡇⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣶⣶⣶⣶⣾⠿⣿⡟⠁⠀⣼⠃⠀⠀⠀⠀⠀⣠⠞⣠⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠈⡆⠀⠀⠀⠀⠈⠇⠀⠀⢀⡤⠚⠉⠀⠀⠀⠐⠁⡇⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣶⣶⣶⣶⣾⠿⣿⡟⠁⠀⣼⠃⠀⠀⠀⠀⠀⣠➶⣠⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠹⡄⠀⠀⠀⠀⠀⠀⠉⠻⡄⠀⠀⠀⠀⠀⠀⣰⠁⠀⠀⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⠃⣠⠏⠀⠀⣰⠏⠀⠀⠀⠀⠠⠞⢁⡴⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠙⣄⠀⠀⠀⠀⠀⠀⠀⠊⠀⠀⠀⠀⢀⡴⠋⠳⢄⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⠁⠊⠀⠀⢀⡰⠋⠀⠀⠀⠀⠀⣠⡴⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠈⠑⠦⣀⡀⠀⠀⠀⠀⠀⣀⡠⠖⠋⠀⠀⠀⠀⠙⠢⢄⡀⠀⠀⠀⠀⠈⠛⢿⣇⣀⣀⣠⠴⠋⠀⠀⠀⢀⣀⠤⠚⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -56,6 +58,7 @@ export default function Home() {
   const [activeVector, setActiveVector] = useState('getteachperinfo');
   const [params, setParams] = useState<{[key: string]: string}>({ fteachcode: '' });
   const [archiveSearch, setArchiveSearch] = useState('');
+  const [showMascots, setShowMascots] = useState(false);
   
 
   const formatLabel = (key: string) => {
@@ -159,12 +162,12 @@ export default function Home() {
       {/* Header */}
       <header className="w-full max-w-5xl mb-12 relative flex justify-center items-center animate-in fade-in duration-1000">
         {/* ASCII Shrek Logo */}
-        <pre className="hidden lg:block absolute -left-16 xl:-left-40 top-1/2 -translate-y-1/2 text-[10px] text-[#00ff00] font-mono leading-none opacity-30 hover:opacity-100 transition-all duration-500 cursor-help text-left drop-shadow-[0_0_5px_rgba(0,255,0,0.2)] hover:drop-shadow-[0_0_25px_rgba(0,255,0,1)] z-20">
+        <pre className={`absolute -left-16 xl:-left-40 top-1/2 -translate-y-1/2 text-[10px] text-[#00ff00] font-mono leading-none transition-all duration-700 cursor-help text-left drop-shadow-[0_0_5px_rgba(0,255,0,0.2)] hover:drop-shadow-[0_0_25px_rgba(0,255,0,1)] z-20 ${showMascots ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}>
           {SHREK_ASCII}
         </pre>
 
         {/* ASCII Pepe Logo */}
-        <pre className="hidden lg:block absolute -right-32 xl:-right-64 top-1/2 -translate-y-1/2 text-[6px] text-[#00ff00] font-mono leading-none opacity-30 hover:opacity-100 transition-all duration-500 cursor-help text-left drop-shadow-[0_0_5px_rgba(0,255,0,0.2)] hover:drop-shadow-[0_0_25px_rgba(0,255,0,1)] z-20">
+        <pre className={`absolute -right-32 xl:-right-64 top-1/2 -translate-y-1/2 text-[6px] text-[#00ff00] font-mono leading-none transition-all duration-700 cursor-help text-left drop-shadow-[0_0_5px_rgba(0,255,0,0.2)] hover:drop-shadow-[0_0_25px_rgba(0,255,0,1)] z-20 ${showMascots ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}>
           {RIGHT_ASCII}
         </pre>
         
@@ -230,12 +233,12 @@ export default function Home() {
 
       {/* Live Input Section (Only for Teacher Profile) */}
       {activeVector === 'getteachperinfo' && (
-        <div className="w-full max-w-2xl mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="w-full max-w-5xl mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <form onSubmit={handleSearch} className="flex flex-col gap-4">
             <input
               type="text"
               className="glowing-input text-center text-xl uppercase tracking-[0.2em]"
-              placeholder="ENTER FACULTY CODE (e.g. 101)"
+              placeholder="ENTER CODE (e.g. PUNIV02237, 20233CSE0025, EXTERNALPHD0003)"
               value={params.fteachcode || ''}
               onChange={(e) => setParams({ fteachcode: e.target.value })}
             />
@@ -244,7 +247,7 @@ export default function Home() {
               className="glowing-button text-lg uppercase tracking-[0.3em] font-black"
               disabled={loading}
             >
-              {loading ? 'BREACHING DATABASE...' : 'QUERY LIVE ORACLE'}
+              {loading ? 'BREACHING DATABASE...' : 'initiate query'}
             </button>
           </form>
         </div>
@@ -387,6 +390,25 @@ export default function Home() {
       <footer className="mt-16 text-white/20 text-[10px] uppercase tracking-widest font-mono">
         © 2026 PresidencyBlacked // Transparency Portfolio // Educational Purposes Only
       </footer>
+
+      {/* Swipe Toggle Button */}
+      <div className="fixed bottom-8 right-8 z-[100] flex items-center gap-3 animate-in fade-in slide-in-from-right-8 duration-1000">
+        <span className={`font-mono text-[10px] uppercase tracking-widest transition-opacity duration-500 ${showMascots ? 'text-[#00ff00]' : 'text-white/40'}`}>
+          {showMascots ? 'Mascots Active' : 'Hidden Mascots'}
+        </span>
+        <button 
+          onClick={() => setShowMascots(!showMascots)}
+          className={`group relative w-16 h-8 rounded-full transition-all duration-500 border-2 cursor-pointer ${showMascots ? 'bg-[#00ff00]/10 border-[#00ff00] shadow-[0_0_20px_rgba(0,255,0,0.3)]' : 'bg-white/5 border-white/20'}`}
+        >
+          <div className={`absolute top-1 left-1 w-5 h-5 rounded-full transition-all duration-500 transform flex items-center justify-center ${showMascots ? 'translate-x-8 bg-[#00ff00]' : 'translate-x-0 bg-white/20'}`}>
+            <div className={`w-2 h-2 rounded-full ${showMascots ? 'bg-black' : 'bg-white/40'}`}></div>
+          </div>
+          {/* Subtle swipe track line */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
+            <div className="w-10 h-[1px] bg-white"></div>
+          </div>
+        </button>
+      </div>
     </main>
   );
 }
