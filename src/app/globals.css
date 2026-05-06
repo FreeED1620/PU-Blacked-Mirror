@@ -12,8 +12,8 @@
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-blur: blur(16px);
   --accent: #ffffff;
-  --accent-muted: rgba(255, 255, 255, 0.5);
-  --danger: #ff3333;
+  --accent-muted: rgba(255, 255, 255, 0.9);
+  --danger: #ff4d4d;
 }
 
 body {
