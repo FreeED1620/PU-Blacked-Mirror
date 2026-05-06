@@ -59,6 +59,7 @@ export default function Home() {
   const [params, setParams] = useState<{[key: string]: string}>({ fteachcode: '' });
   const [archiveSearch, setArchiveSearch] = useState('');
   const [showMascots, setShowMascots] = useState(false);
+  const [userRegNo, setUserRegNo] = useState('20241BCI0249');
   
 
   const formatLabel = (key: string) => {
@@ -109,7 +110,29 @@ export default function Home() {
     }
   };
 
-  const handleVectorClick = (id: string) => {
+  const handlePubApiQuery = async (action: string, customParams: {[key: string]: string} = {}) => {
+    setLoading(true);
+    setError(null);
+    setData(null);
+    setActiveVector(action);
+
+    try {
+      const queryParams = new URLSearchParams({ a: action, ...customParams });
+      const res = await fetch(`/api/pubapi?${queryParams.toString()}`);
+      const result = await res.json();
+
+      if (result) {
+        setData(result);
+      } else {
+        setError('No records found for this vector.');
+      }
+    } catch (err) {
+      setError('Failed to query the PubAPI Tool. Connection refused.');
+    } finally {
+      setLoading(false);
+    }
+  };
+   const handleVectorClick = (id: string) => {
     setActiveVector(id);
     setError(null);
     
@@ -358,6 +381,78 @@ export default function Home() {
           )}
         </div>
       )}
+
+
+      {/* Website Links Section */}
+      <div className="w-full max-w-6xl mb-16">
+        <div className="flex items-center gap-4 mb-10">
+          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic">
+            Website<span className="text-[#00ff00]">_Links</span>
+          </h2>
+          <div className="h-[1px] flex-1 bg-white/20"></div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Base Website Link */}
+          <a 
+            href="https://coe.pgi-intraconnect.in/pubapi/app.php" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="glass-panel p-8 border-t-4 border-t-[#00ff00] hover:translate-y-[-4px] transition-all group"
+          >
+            <div className="flex justify-between items-start mb-6">
+              <span className="font-mono text-[10px] bg-white/20 px-2 py-0.5 rounded text-white/80">LINK_001</span>
+              <span className="text-[9px] font-black px-2 py-0.5 rounded bg-[#00ff00] text-black">STABLE</span>
+            </div>
+            <h3 className="text-xl font-black uppercase mb-2 italic group-hover:text-[#00ff00] transition-colors">PUB_API_HOME</h3>
+            <p className="text-[11px] font-mono text-white/60 mb-6">Direct access to the public API root endpoint.</p>
+            <div className="bg-black/80 p-3 rounded-lg font-mono text-[10px] text-[#00ff00] border border-white/25 break-all">
+              coe.pgi-intraconnect.in/pubapi/app.php
+            </div>
+          </a>
+
+          {/* Generate Token New */}
+          <div 
+            onClick={() => handlePubApiQuery('genrateTokennew')}
+            className="glass-panel p-8 border-t-4 border-t-[#00ff00] hover:translate-y-[-4px] transition-all cursor-pointer group"
+          >
+            <div className="flex justify-between items-start mb-6">
+              <span className="font-mono text-[10px] bg-white/20 px-2 py-0.5 rounded text-white/80">EXEC_001</span>
+              <span className="text-[9px] font-black px-2 py-0.5 rounded bg-[#00ff00] text-black">FUNCTION</span>
+            </div>
+            <h3 className="text-xl font-black uppercase mb-2 italic group-hover:text-[#00ff00] transition-colors">GEN_TOKEN_NEW</h3>
+            <p className="text-[11px] font-mono text-white/60 mb-6">Generate a fresh system token for audit sessions.</p>
+            <div className="bg-black/80 p-3 rounded-lg font-mono text-[10px] text-[#00ff00] border border-white/25 break-all">
+              [INITIATE_FUNCTION_CALL]
+            </div>
+          </div>
+
+          {/* Generate Token with RegNo */}
+          <div className="glass-panel p-8 border-t-4 border-t-[#00ff00] hover:translate-y-[-4px] transition-all group">
+            <div className="flex justify-between items-start mb-6">
+              <span className="font-mono text-[10px] bg-white/20 px-2 py-0.5 rounded text-white/80">EXEC_002</span>
+              <span className="text-[9px] font-black px-2 py-0.5 rounded bg-[#00ff00] text-black">DYNAMIC</span>
+            </div>
+            <h3 className="text-xl font-black uppercase mb-2 italic group-hover:text-[#00ff00] transition-colors">GEN_TOKEN_REG</h3>
+            <div className="flex flex-col gap-3 mb-4">
+              <input 
+                type="text"
+                value={userRegNo}
+                onChange={(e) => setUserRegNo(e.target.value)}
+                placeholder="REG_NO"
+                className="w-full bg-black/50 border border-white/20 p-2 rounded font-mono text-[10px] tracking-widest focus:border-[#00ff00] focus:outline-none transition-all"
+              />
+              <button 
+                onClick={() => handlePubApiQuery('genrateToken', { univcode: '064', regno: userRegNo })}
+                className="w-full bg-[#00ff00]/10 border border-[#00ff00]/40 py-2 rounded font-mono text-[10px] text-[#00ff00] hover:bg-[#00ff00] hover:text-black transition-all uppercase tracking-widest font-black"
+              >
+                Execute Breach
+              </button>
+            </div>
+            <p className="text-[11px] font-mono text-white/60">Generate targeted token using registration mapping.</p>
+          </div>
+        </div>
+      </div>
 
       {/* Security Audit Ledger */}
       <div className="w-full max-w-6xl mb-16">
