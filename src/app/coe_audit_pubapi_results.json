@@ -2,15 +2,18 @@
   {
     "action": "getProfileDet",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
+      "regno": "20241BCI0249",
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fsubcode": "PSY1001",
+      "fsubid": "PSY1001",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
       "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "programLevel": "UG"
     },
+    "category": "STUDENT",
     "status": "SUCCESS",
     "data": {
       "error_code": -1,
@@ -21,15 +24,12 @@
   {
     "action": "getToken",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "univcode": "064",
+      "regno": "20241BCI0249"
     },
+    "category": "AUTH",
     "status": "FAILURE",
     "error": "Not JSON",
     "raw": "<br />\n<b>Fatal error</b>:  Uncaught Exception: Exception executing undefined action : getToken in C:\\Apache24\\htdocs\\pubapi\\src\\crequestbroker.php:86\nStack trace:\n#0 C:\\Apache24\\htdocs\\pubapi\\app.php(10): CRequestBroker-&gt;ExecuteAction()\n#1 {main}\n  thrown in <b>C:\\Apache24\\htdocs\\pubapi\\src\\crequestbroker.php</b> on line <b>86</b><br />\n"
@@ -37,15 +37,13 @@
   {
     "action": "apitest",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fyear": "2024",
+      "fexamno": "1",
+      "univcode": "064",
+      "fcollcode": "1",
+      "fdeptcode": "CSE"
     },
+    "category": "SYSTEM",
     "status": "FAILURE",
     "error": "Not JSON",
     "raw": "bool(false)\n"
@@ -53,15 +51,18 @@
   {
     "action": "getStudentProfile",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
+      "regno": "20241BCI0249",
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fsubcode": "PSY1001",
+      "fsubid": "PSY1001",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
       "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "programLevel": "UG"
     },
+    "category": "STUDENT",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
@@ -69,7 +70,7 @@
       "data": {
         "resdata": [
           {
-            "regno": "20251BAE0001",
+            "regno": "20241BCI0249",
             "status": "F",
             "msg": "Invalid Register No."
           }
@@ -80,15 +81,18 @@
   {
     "action": "getStudentSubject",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
+      "regno": "20241BCI0249",
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fsubcode": "PSY1001",
+      "fsubid": "PSY1001",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
       "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "programLevel": "UG"
     },
+    "category": "STUDENT",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
@@ -97,7 +101,7 @@
         "resdata": [
           {
             "status": "T",
-            "regno": "20251BAE0001",
+            "regno": "20241BCI0249",
             "subcode": null,
             "msg": "Inserted Successfully"
           }
@@ -108,15 +112,18 @@
   {
     "action": "getStudSubIa",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
+      "regno": "20241BCI0249",
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fsubcode": "PSY1001",
+      "fsubid": "PSY1001",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
       "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "programLevel": "UG"
     },
+    "category": "STUDENT",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
@@ -125,7 +132,7 @@
         "resdata": [
           {
             "status": "F",
-            "regno": "20251BAE0001",
+            "regno": "20241BCI0249",
             "degcode": null,
             "subcode": null,
             "msg": "Marks are Empty"
@@ -137,15 +144,18 @@
   {
     "action": "getStudRes",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
+      "regno": "20241BCI0249",
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fsubcode": "PSY1001",
+      "fsubid": "PSY1001",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
       "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "programLevel": "UG"
     },
+    "category": "STUDENT",
     "status": "FAILURE",
     "error": "Not JSON",
     "raw": ""
@@ -153,15 +163,18 @@
   {
     "action": "pushStudExamFee",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
+      "regno": "20241BCI0249",
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fsubcode": "PSY1001",
+      "fsubid": "PSY1001",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
       "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "programLevel": "UG"
     },
+    "category": "STUDENT",
     "status": "FAILURE",
     "error": "Not JSON",
     "raw": ""
@@ -169,15 +182,18 @@
   {
     "action": "updateStudExamFee",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
+      "regno": "20241BCI0249",
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fsubcode": "PSY1001",
+      "fsubid": "PSY1001",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
       "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "programLevel": "UG"
     },
+    "category": "STUDENT",
     "status": "SUCCESS",
     "data": {
       "error_code": -1,
@@ -188,15 +204,13 @@
   {
     "action": "downloadStudPhoto",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fexamno": "1",
+      "fyear": "2024",
+      "univcode": "064"
     },
+    "category": "DOWNLOAD",
     "status": "FAILURE",
     "error": "Not JSON",
     "raw": "File downloading failed."
@@ -204,15 +218,13 @@
   {
     "action": "downloadStudHalltiket",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fexamno": "1",
+      "fyear": "2024",
+      "univcode": "064"
     },
+    "category": "DOWNLOAD",
     "status": "FAILURE",
     "error": "Not JSON",
     "raw": "<h1>Data not available</h1>"
@@ -220,15 +232,13 @@
   {
     "action": "downloadStudHall",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fexamno": "1",
+      "fyear": "2024",
+      "univcode": "064"
     },
+    "category": "DOWNLOAD",
     "status": "SUCCESS",
     "data": {
       "error_code": -1,
@@ -239,15 +249,13 @@
   {
     "action": "sduvaldata",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fyear": "2024",
+      "fexamno": "1",
+      "univcode": "064",
+      "fcollcode": "1",
+      "fdeptcode": "CSE"
     },
+    "category": "SYSTEM",
     "status": "FAILURE",
     "error": "Not JSON",
     "raw": ""
@@ -255,36 +263,36 @@
   {
     "action": "genrateToken",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "univcode": "064",
+      "regno": "20241BCI0249"
     },
+    "category": "AUTH",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
       "status": "success",
       "data": {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Nzg3NTY3ODAsImlzcyI6Imh0dHBzOlwvXC91bml2ZXJzaXR5c29sdXRpb25zLmluXC90ZHZzLXBocFwvIiwiZXhwIjoxNzc4NzU3MzgwLCJ1c2VySWQiOm51bGx9.rhxCLsX5eNQI3dcw6WzE30jaD010ziSivwYcO03Knx8"
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Nzg4Njc0NDIsImlzcyI6Imh0dHBzOlwvXC91bml2ZXJzaXR5c29sdXRpb25zLmluXC90ZHZzLXBocFwvIiwiZXhwIjoxNzc4ODY4MDQyLCJ1c2VySWQiOiIyMDI0MUJDSTAyNDkifQ.5LV4sIRW3hPzn1Y_nCAY_DlGfbpUs3FghxQfdLlpP1I"
       }
     }
   },
   {
     "action": "getStudAttDet",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
+      "regno": "20241BCI0249",
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fsubcode": "PSY1001",
+      "fsubid": "PSY1001",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
       "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "programLevel": "UG"
     },
+    "category": "STUDENT",
     "status": "SUCCESS",
     "data": {
       "error_code": -1,
@@ -295,15 +303,14 @@
   {
     "action": "updateqpcode",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fteachcode": "PUNIV02237",
+      "fdeptcode": "CSE",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
+      "fuser": "admin"
     },
+    "category": "TEACHER",
     "status": "FAILURE",
     "error": "Not JSON",
     "raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Failed opening required 'C:/Apache24/htdocs/pubapi/src/updateqpcode.php' (include_path='.;C:\\php\\pear') in C:\\Apache24\\htdocs\\pubapi\\src\\crequestbroker.php:81\nStack trace:\n#0 C:\\Apache24\\htdocs\\pubapi\\app.php(10): CRequestBroker-&gt;ExecuteAction()\n#1 {main}\n  thrown in <b>C:\\Apache24\\htdocs\\pubapi\\src\\crequestbroker.php</b> on line <b>81</b><br />\n"
@@ -311,36 +318,31 @@
   {
     "action": "genrateTokennew",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "univcode": "064",
+      "regno": "20241BCI0249"
     },
+    "category": "AUTH",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
       "status": "success",
       "data": {
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Nzg3NTY3ODEsImlzcyI6Imh0dHBzOlwvXC91bml2ZXJzaXR5c29sdXRpb25zLmluXC90ZHZzLXBocFwvIiwiZXhwIjoxNzc4NzU3MzgxLCJ1c2VySWQiOiJhZG1pbiJ9.VWTUhB-v5IDkgBiv-Qjaxtb_xysA3gvEHGNffSA6Tn8"
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Nzg4Njc0NDUsImlzcyI6Imh0dHBzOlwvXC91bml2ZXJzaXR5c29sdXRpb25zLmluXC90ZHZzLXBocFwvIiwiZXhwIjoxNzc4ODY4MDQ1LCJ1c2VySWQiOiJhZG1pbiJ9.1u-iACSsk5EEGMHINsf1MNZtsGkti9UDQXZSiATzKOY"
       }
     }
   },
   {
     "action": "getEsubject",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fyear": "2024",
+      "fexamno": "1",
+      "univcode": "064",
+      "fcollcode": "1",
+      "fdeptcode": "CSE"
     },
+    "category": "SYSTEM",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
@@ -365,15 +367,18 @@
   {
     "action": "getStudSubEligble",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
+      "regno": "20241BCI0249",
+      "fregno": "20241BCI0249",
+      "fregpno": "20241BCI0249",
+      "fsubcode": "PSY1001",
+      "fsubid": "PSY1001",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
       "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "programLevel": "UG"
     },
+    "category": "STUDENT",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
@@ -388,15 +393,14 @@
   {
     "action": "midendtermmarkspush",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fteachcode": "PUNIV02237",
+      "fdeptcode": "CSE",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
+      "fuser": "admin"
     },
+    "category": "TEACHER",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
@@ -412,15 +416,14 @@
   {
     "action": "createAssessmentSchema",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fteachcode": "PUNIV02237",
+      "fdeptcode": "CSE",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
+      "fuser": "admin"
     },
+    "category": "TEACHER",
     "status": "FAILURE",
     "error": "Not JSON",
     "raw": "string(1264) \"{\"filterData\":{\"school\":\"SCHOOL OF LIBERAL ARTS AND SCIENCES\",\"programLevel\":\"UG\",\"batchStartYear\":\"2025\",\"term\":\"S1\",\"assessmentType\":\"3. End-Term Exam\",\"assessmentInstance\":\"End-Term Exam\",\"subject\":\"PSY1001\"},\"assessmentData\":{\"totalMarks\":100,\"questions\":[{\"order\":\"101\",\"maxMark\":\"3\",\"coCode\":\"CO1\"},{\"order\":\"102\",\"maxMark\":\"3\",\"coCode\":\"CO1\"},{\"order\":\"103\",\"maxMark\":\"3\",\"coCode\":\"CO2\"},{\"order\":\"104\",\"maxMark\":\"3\",\"coCode\":\"CO2\"},{\"order\":\"105\",\"maxMark\":\"3\",\"coCode\":\"CO3\"},{"
@@ -428,15 +431,14 @@
   {
     "action": "pushSchmaMarks",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fteachcode": "PUNIV02237",
+      "fdeptcode": "CSE",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
+      "fuser": "admin"
     },
+    "category": "TEACHER",
     "status": "FAILURE",
     "error": "Not JSON",
     "raw": ""
@@ -444,15 +446,14 @@
   {
     "action": "getmasteach",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fteachcode": "PUNIV02237",
+      "fdeptcode": "CSE",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
+      "fuser": "admin"
     },
+    "category": "TEACHER",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
@@ -471,15 +472,14 @@
   {
     "action": "getteachsub",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fteachcode": "PUNIV02237",
+      "fdeptcode": "CSE",
+      "fcollcode": "1",
+      "fyear": "2024",
+      "fexamno": "1",
+      "fuser": "admin"
     },
+    "category": "TEACHER",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
@@ -500,15 +500,13 @@
   {
     "action": "getMarksPushStatus",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fyear": "2024",
+      "fexamno": "1",
+      "univcode": "064",
+      "fcollcode": "1",
+      "fdeptcode": "CSE"
     },
+    "category": "SYSTEM",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,
@@ -516,7 +514,7 @@
       "data": [
         {
           "status": "T",
-          "regno": "20251BAE0001",
+          "regno": null,
           "sem": null,
           "subcode": null,
           "msg": "Updated Successfully"
@@ -527,15 +525,13 @@
   {
     "action": "getSchemeStatus",
     "params": {
-      "regno": "20251BAE0001",
-      "subject": "PSY1001",
-      "school": "SCHOOL OF LIBERAL ARTS AND SCIENCES",
-      "term": "S1",
-      "programLevel": "UG",
-      "batchStartYear": "2025",
-      "assessmentType": "3. End-Term Exam",
-      "assessmentInstance": "End-Term Exam"
+      "fyear": "2024",
+      "fexamno": "1",
+      "univcode": "064",
+      "fcollcode": "1",
+      "fdeptcode": "CSE"
     },
+    "category": "SYSTEM",
     "status": "SUCCESS",
     "data": {
       "error_code": 0,

@@ -1,0 +1,188 @@
+[
+  {
+    "action": "getProfileDet",
+    "isProtected": true,
+    "data": {
+      "error_code": -1,
+      "status": "Failure",
+      "data": "Unauthorized User"
+    }
+  },
+  {
+    "action": "getToken",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "<br />\n<b>Fatal error</b>:  Uncaught Exception: Exception executing undefined action : getToken in C"
+  },
+  {
+    "action": "apitest",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "bool(false)\n"
+  },
+  {
+    "action": "getStudentProfile",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "Wrong number of segments"
+  },
+  {
+    "action": "getStudentSubject",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "Wrong number of segments"
+  },
+  {
+    "action": "getStudSubIa",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "Wrong number of segments"
+  },
+  {
+    "action": "getStudRes",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": ""
+  },
+  {
+    "action": "pushStudExamFee",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": ""
+  },
+  {
+    "action": "updateStudExamFee",
+    "isProtected": true,
+    "data": {
+      "error_code": -1,
+      "status": "Failure",
+      "data": "Unauthorized User"
+    }
+  },
+  {
+    "action": "downloadStudPhoto",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "File downloading failed."
+  },
+  {
+    "action": "downloadStudHalltiket",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "<h1>Data not available</h1>"
+  },
+  {
+    "action": "downloadStudHall",
+    "isProtected": false,
+    "data": {
+      "error_code": -1,
+      "status": "Failure",
+      "data": "Register no. empty"
+    }
+  },
+  {
+    "action": "sduvaldata",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": ""
+  },
+  {
+    "action": "genrateToken",
+    "isProtected": true,
+    "data": {
+      "error_code": 0,
+      "status": "success",
+      "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Nzg4NjY0MTMsImlzcyI6Imh0dHBzOlwvXC91bml2ZXJzaXR5c29sdXRpb25zLmluXC90ZHZzLXBocFwvIiwiZXhwIjoxNzc4ODY3MDEzLCJ1c2VySWQiOiIyMDI0MUJDSTAyNDkifQ.7WUTlaIDyZlJwO2z8u5nD7TZDnhPZmWjr8Df9Vtu8Vk"
+      }
+    }
+  },
+  {
+    "action": "getStudAttDet",
+    "isProtected": true,
+    "data": {
+      "error_code": -1,
+      "status": "Failure",
+      "data": "Unauthorized User"
+    }
+  },
+  {
+    "action": "updateqpcode",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "<br />\n<b>Fatal error</b>:  Uncaught Error: Failed opening required 'C:/Apache24/htdocs/pubapi/src/u"
+  },
+  {
+    "action": "genrateTokennew",
+    "isProtected": true,
+    "data": {
+      "error_code": 0,
+      "status": "success",
+      "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Nzg4NjY0MTQsImlzcyI6Imh0dHBzOlwvXC91bml2ZXJzaXR5c29sdXRpb25zLmluXC90ZHZzLXBocFwvIiwiZXhwIjoxNzc4ODY3MDE0LCJ1c2VySWQiOiJhZG1pbiJ9.GGmCvb0x9fuqGSyQG9KuIxoAxrasFnn5OUs1PFvqnag"
+      }
+    }
+  },
+  {
+    "action": "getEsubject",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "Wrong number of segments"
+  },
+  {
+    "action": "getStudSubEligble",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "Wrong number of segments"
+  },
+  {
+    "action": "midendtermmarkspush",
+    "isProtected": false,
+    "data": {
+      "error_code": 0,
+      "status": "Completed",
+      "data": {
+        "processed": 0,
+        "success": 0,
+        "errors": 0,
+        "results": []
+      }
+    }
+  },
+  {
+    "action": "createAssessmentSchema",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "string(1264) \"{\"filterData\":{\"school\":\"SCHOOL OF LIBERAL ARTS AND SCIENCES\",\"programLevel\":\"UG\",\"bat"
+  },
+  {
+    "action": "pushSchmaMarks",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": ""
+  },
+  {
+    "action": "getmasteach",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "Wrong number of segments"
+  },
+  {
+    "action": "getteachsub",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "Wrong number of segments"
+  },
+  {
+    "action": "getMarksPushStatus",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "Wrong number of segments"
+  },
+  {
+    "action": "getSchemeStatus",
+    "isProtected": true,
+    "error": "Not JSON",
+    "raw": "Wrong number of segments"
+  }
+]
