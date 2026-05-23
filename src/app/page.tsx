@@ -293,7 +293,7 @@ export default function Home() {
                 : 'text-white/60 hover:text-white'
             }`}
           >
-            [STAGING: DVS1] ({dvs1Data.length})
+            dvs1.pgi-intraconnect.in ({dvs1Data.length})
           </button>
           <button
             onClick={() => { setEnvironment('COE'); setActiveVector(''); setData(null); setError(null); }}
@@ -303,7 +303,7 @@ export default function Home() {
                 : 'text-white/60 hover:text-white'
             }`}
           >
-            [PRODUCTION: COE] ({coeData.length})
+            coe.pgi-intraconnect.in ({coeData.length})
           </button>
         </div>
 
@@ -322,7 +322,7 @@ export default function Home() {
           TARGET_ENDPOINT: {environment === 'DVS1' ? 'https://dvs1.pgi-intraconnect.in/tdvs-php/app.php' : 'https://coe.pgi-intraconnect.in/pubapi/app.php'}
         </a>
       </div>
-
+      
       {/* Vector Selector - Searchable & Scrollable */}
       <div className="w-full max-w-6xl mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="flex items-center justify-between mb-4 px-2">
@@ -527,13 +527,14 @@ export default function Home() {
       )}
 
 
-      {/* Website Links Section */}
+      {/* Security Audit Ledger & Links */}
       <div className="w-full max-w-6xl mb-16">
         <div className="flex items-center gap-4 mb-10">
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic">
-            Website<span className="text-[#00ff00]">_Links</span>
+            Exposed<span className="text-[#ff4d4d]">_Vulnerabilities</span>
           </h2>
           <div className="h-[1px] flex-1 bg-white/20"></div>
+          <span className="text-[12px] font-mono opacity-60">VERIFIED_EXPLOITS: 03</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -595,27 +596,33 @@ export default function Home() {
             </div>
             <p className="text-[11px] font-mono text-white/60">Generate targeted token using registration mapping.</p>
           </div>
-        </div>
-      </div>
 
-      {/* Security Audit Ledger */}
-      <div className="w-full max-w-6xl mb-16">
-        <div className="flex items-center gap-4 mb-10">
-          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic">
-            Security_Audit<span className="text-[#ff4d4d]">_Ledger</span>
-          </h2>
-          <div className="h-[1px] flex-1 bg-white/20"></div>
-          <span className="text-[12px] font-mono opacity-60">VERIFIED_EXPLOITS: 04</span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            { id: "0x0A2", title: "Results IDOR", poc: "https://coe.pgi-intraconnect.in/#/result", desc: "Unauthorized access to comprehensive academic records." },
-            { id: "0x0BC", title: "Linways PII", poc: ".../attendance-report?redir=true", desc: "Broken Access Control allows retrieval of private contact info." },
-            { id: "0x0FF", title: "Admin Hijack", poc: "https://dvs1.pgi-intraconnect.in/#/admin", desc: "Dashboard access achieved through session manipulation." },
-            { id: "0x1A4", title: "Mass Endpoint Leak", poc: "/api/teacher?action=...", desc: "Discovery of 306 undocumented backend API endpoints with broken access controls." }
+            { 
+              id: "0x0A2", 
+              title: "Results IDOR", 
+              poc: "https://coe.pgi-intraconnect.in/#/result", 
+              desc: "Unauthorized access to comprehensive academic records by manipulation of registration number." 
+            },
+            { 
+              id: "0x0FF", 
+              title: "Admin Hijack", 
+              poc: "https://dvs1.pgi-intraconnect.in/#/admin", 
+              desc: "Dashboard access achieved through session manipulation." 
+            },
+            { 
+              id: "0x1A4", 
+              title: "Mass Endpoint Leak", 
+              poc: "https://dvs1.pgi-intraconnect.in/tdvs-php/app.php", 
+              desc: "Discovery of 306 undocumented backend API endpoints with broken access controls.",
+              href: "https://dvs1.pgi-intraconnect.in/tdvs-php/app.php"
+            }
           ].map((bug) => (
-            <div key={bug.id} className="glass-panel p-8 border-t-4 border-t-[#ff4d4d] hover:translate-y-[-4px] transition-all">
+            <div 
+              key={bug.id} 
+              className={`glass-panel p-8 border-t-4 border-t-[#ff4d4d] transition-all hover:translate-y-[-4px] ${bug.href ? 'cursor-pointer hover:shadow-[0_0_15px_rgba(255,77,77,0.2)]' : ''}`}
+              onClick={bug.href ? () => window.open(bug.href, '_blank') : undefined}
+            >
               <div className="flex justify-between items-start mb-6">
                 <span className="font-mono text-[10px] bg-white/20 px-2 py-0.5 rounded text-white/80">{bug.id}</span>
                 <span className="text-[9px] font-black px-2 py-0.5 rounded bg-[#ff4d4d] text-black">CRITICAL</span>
@@ -629,7 +636,7 @@ export default function Home() {
       </div>
 
       <footer className="mt-16 text-white/40 text-[10px] uppercase tracking-widest font-mono">
-        © 2026 PresidencyBlacked // Transparency Portfolio // Educational Purposes Only
+        © 2026 PresidencyBlacked // Educational Purposes Only
       </footer>
 
       {/* Swipe Toggle Button */}
